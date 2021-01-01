@@ -1,7 +1,7 @@
 import java.util.*;
 class eth_year_converter
 {
-    void main()
+    public static void main()
     {
         Scanner sc=new Scanner(System.in);
         int year=0,month=0,day=0, no_days;
@@ -19,7 +19,7 @@ class eth_year_converter
             if(year<2021)
             {
                 isAC=false;
-                yeardiff=2021-(year+1);
+                yeardiff=2021-(year);
                 while(yeardiff!=0)
                 {
                     yeardiff--;
@@ -40,7 +40,7 @@ class eth_year_converter
             else
             {
                 isAC=true;
-                yeardiff=(year+1)-2021;
+                yeardiff=(year)-2021;
                 while(yeardiff!=0)
                 {
                     yeardiff--;
