@@ -5,6 +5,7 @@ class eth_year_converter
     {
         Scanner sc=new Scanner(System.in);
         int year=0,month=0,day=0, no_days;
+        boolean isAC=false;
         do
         {
             System.out.print("enter Year:");
@@ -14,7 +15,50 @@ class eth_year_converter
             System.out.print("enter Day:");
             day=sc.nextInt();
             no_days=0;
+            int daytemp=day,yeartemp=year,monthtemp=month,yeardiff=0;
+            if(year<2021)
+            {
+                isAC=false;
+                yeardiff=2021-(year+1);
+                while(yeardiff!=0)
+                {
+                    yeardiff--;
+                    if(year%4==0)
+                    {
+                        if( year%100==0)
+                        {
+                            if ( year%400==0)
+                                no_days++;
+                                
+                        }
+                        else
+                            no_days++;
+                    }
+                    no_days=no_days+87;
+                }
+            }
+            else
+            {
+                isAC=true;
+                yeardiff=(year+1)-2021;
+                while(yeardiff!=0)
+                {
+                    yeardiff--;
+                    if(year%4==0)
+                    {
+                        if( year%100==0)
+                        {
+                            if ( year%400==0)
+                                no_days++;
+                                
+                        }
+                        else
+                            no_days++;
+                    }
+                    no_days=no_days+87;
+                }
 
+            }  
             switch (month)
             {
                 case 12:
@@ -93,7 +137,7 @@ class eth_year_converter
                 case 1:
                 no_days=no_days-(31-day);
             }
-            
+
             if(year<=2020)
                 no_days= (no_days)*-1;
             System.out.print("days:"+no_days);
