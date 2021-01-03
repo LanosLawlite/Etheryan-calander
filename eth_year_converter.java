@@ -5,17 +5,21 @@ class eth_year_converter
     {
         Scanner sc=new Scanner(System.in);
         int year=0,month=0,day=0, no_days;
+        int daytemp=day,yeartemp=year,monthtemp=month,yeardiff=0;
         boolean isAC=false;
         do
         {
             System.out.print("enter Year:");
             year=sc.nextInt();
+            if(year<2020)
+                isAC=false;
+            else
+                isAC=true;
             System.out.print("enter Month:");
             month=sc.nextInt();
             System.out.print("enter Day:");
             day=sc.nextInt();
             no_days=0;
-            int daytemp=day,yeartemp=year,monthtemp=month,yeardiff=0;
 
             switch (month)
             {
@@ -109,23 +113,46 @@ class eth_year_converter
             else
                 no_days=365-no_days;
 
-            for (;yeartemp<2020;yeartemp++)                   // year is <2021
+            yeartemp=year;
+            if(year<2021)
             {
-                if(year%4==0)
+                for (;yeartemp<2020;yeartemp++)                   // year is <2021
                 {
-                    if( year%100==0)
+                    if(year%4==0)
                     {
-                        if ( year%400==0)
+                        if( year%100==0)
+                        {
+                            if ( year%400==0)
+                                no_days=no_days+366;
+                        }
+                        else
                             no_days=no_days+366;
                     }
-                    else
-                        no_days=no_days+366;
+                    else 
+                        no_days=no_days+365;
                 }
-                else 
-                    no_days=no_days+365;
+
+            }
+            else
+            {
+                for (;yeartemp>2020;yeartemp--)                   // year is >2021
+                {
+                    if(year%4==0)
+                    {
+                        if( year%100==0)
+                        {
+                            if ( year%400==0)
+                                no_days=no_days+366;
+                        }
+                        else
+                            no_days=no_days+366;
+                    }
+                    else 
+                        no_days=no_days+365;
+                }
             }
             if(year<2020)
-            ++no_days;
+                ++no_days;
             System.out.print(no_days);
         }while(true);
     }
