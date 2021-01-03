@@ -6,7 +6,7 @@ class eth_test
         Scanner sc=new Scanner(System.in);
         int year=0,month=0,day=0, no_days;
         int daytemp=day,yeartemp=year,monthtemp=month,yeardiff=0,leap=0;
-        boolean isAC=false;
+        boolean isAC=false, c=false;
         do
         {
             System.out.print("enter Year:");
@@ -20,7 +20,7 @@ class eth_test
             System.out.print("enter Day:");
             day=sc.nextInt();
             no_days=0;
-            if(year<2021)
+            if(year<=2020)
             {
                 for(;yeartemp<2020;yeartemp++)
                 {
@@ -102,13 +102,74 @@ class eth_test
                 break;
                 case 2:
                 yeartemp=year;
-                for(;yeartemp>2020;yeartemp--)
+                if(year<=2020)
                 {
+                    for(;yeartemp<2020;yeartemp--)
+                    {
+                        if(year % 4 == 0)
+                        {
+                            if( year % 100 == 0)
+                            {
+                                if ( year % 400 == 0)
+                                    if (c=false)
+                                    {
+                                        no_days=no_days-(29-day);
+                                        c=true;
+                                    }
+                                    else
+                                    if (c=false)
+                                    {
+                                        no_days=no_days-(28-day);
+                                        c=true;
+                                    }
+                            }
+                            else
+                            {
+                                if (c=false)
+                                {
+                                    no_days=no_days-(29-day);
+                                    c=true;
+                                }                                
+                            }
+                        }
+                        else 
+                        {
+                            if (c=false)
+                            {
+                                no_days=no_days-(28-day);
+                                c=true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for(;yeartemp>2020;yeartemp++)
+                    {
+                        if(year % 4 == 0)
+                        {
+                            if( year % 100 == 0)
+                            {
+                                if ( year % 400 == 0)
+                                    no_days=no_days-(29-day);
+                                else
+                                    no_days=no_days-(28-day);
+                            }
+                            else
+                                no_days=no_days-(29-day);
+                        }
+                        else 
+                        {
+                            no_days=no_days-(28-day);
+                        }                    
+                    }
                 }
                 break;
                 case 1:
                 no_days=no_days-(31-day);
             }
+
+            System.out.println("No of days:"+no_days);
         }
 
         while(true);

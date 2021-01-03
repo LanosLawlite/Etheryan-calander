@@ -142,13 +142,12 @@ class eth_year_converter
                         if( year%100==0)
                         {
                             if ( year%400==0)
-                                no_days=no_days+366;
+                                no_days++;
                         }
                         else
-                            no_days=no_days+366;
-                    }
-                    else 
-                        no_days=no_days+365;
+                            no_days++;
+                    } 
+                    no_days=no_days+365;
                 }
             }
             if(year<2020)
